@@ -602,15 +602,6 @@ pre code {
   margin-left: -15px;
 }
 
-row2 {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
-}
-
 .no-gutters {
   margin-right: 0;
   margin-left: 0;
@@ -1083,11 +1074,6 @@ row2 {
     max-width: 91.666667%;
   }
   .col-md-12 {
-    -ms-flex: 0 0 100%;
-    flex: 0 0 100%;
-    max-width: 100%;
-  }
-  .col-md-12test {
     -ms-flex: 0 0 100%;
     flex: 0 0 100%;
     max-width: 100%;

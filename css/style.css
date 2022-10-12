@@ -406,7 +406,6 @@ button {
 .blog_main .span {font-size: 17px; line-height: 20px; color: #2d2d2d;}
 .our_two_box {box-shadow: #ddd 0px 0px 10px 0px; margin-bottom: 90px;}
 .our_text_box {padding: 1px 30px 1px 1px;}
-.our_text_box_test {box-shadow: #ddd 0px 0px 10px 0px; padding: 30px 30px 30px 30px; margin-bottom: 90px;}
 .our_img figure {margin: 0;}
 .our_img figure img {width: 100%;}
 .awesome {padding-bottom:40px; font-size: 26px; line-height: 38px; color:#333334; } 
@@ -733,12 +732,6 @@ ul.social_icon li a:hover {
      color: #000;
 }
 
-.center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  
-}
 
 /** end footer **/
 
