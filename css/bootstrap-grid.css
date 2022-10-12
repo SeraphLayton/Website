@@ -68,6 +68,15 @@ html {
   margin-left: -15px;
 }
 
+.row3 {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: 0px;
+  margin-left: 0px;
+}
+
 .no-gutters {
   margin-right: 0;
   margin-left: 0;
@@ -540,6 +549,11 @@ html {
     max-width: 91.666667%;
   }
   .col-md-12 {
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .col-md-12testb {
     -ms-flex: 0 0 100%;
     flex: 0 0 100%;
     max-width: 100%;
