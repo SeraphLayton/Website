@@ -87,19 +87,19 @@
 							  <p>Our intern created this PDF generator. It's not 100% secure yet, but there's nothing valuable on this host anyway.
 							  <br> Website: &nbsp <a href="http://pdfcarnage.rumble.host/">http://pdfcarnage.rumble.host/</a>  </p>
 							  <br>
-                              <img src="/Website/writeups/CSRv2022/media/PDFCARNAGE1.png" alt="website" class="center"> 
+                              <img src="/writeups/CSRv2022/media/PDFCARNAGE1.png" alt="website" class="center"> 
                               <br>
                               <br>
                               <p> <h3> == What is this Website about? == </h3> </p>
                               <p> The content of the Website looks rather simple and so is its purpose. You can submit a query and it redirects you to a pdf where the input and the user-agent of the browser is reflected. </p> 
                               <br>
-                              <img src="/Website/writeups/CSRv2022/media/PDFCARNAGETEST.png" alt="website" class="center">
+                              <img src="../writeups/CSRv2022/media/PDFCARNAGETEST.png" alt="website" class="center">
                               <br>
                               <br>
                               <p> We can download the pdf and check if anything seems odd.  What about strings? Hidden Text or anything else? <br> But after a while I came to the conclusion that this will not lead to anything useful. </p>
                               <p>Except the creator of the pdf. This might give a hint about the program running in the background. I checked this by opening dev tools in the browser and inspecting the console: </p>
                               <br>
-                              <img src="/Website/writeups/CSRv2022/media/PDFCARNAGECONSOLE.png" alt="website" class="center">
+                              <img src="/../writeups/CSRv2022/media/PDFCARNAGECONSOLE.png" alt="website" class="center">
                               <br>
                               <p> wkhtmltopdf? Never heared of it. Searching github I found its repository: &nbsp <a href="https://github.com/wkhtmltopdf/wkhtmltopdf"> https://github.com/wkhtmltopdf/wkhtmltopdf </a> </p>
                               <p> Checked the version for vulnerabilitys and took a look at some security reports where I found a link to an interesting Blogpost about XSS that could lead to SSRF and further exploitation. &nbsp <a href="https://cyber-guy.gitbook.io/cyber-guys-blog/blogs/initial-access-via-pdf-file-silently"> https://cyber-guy.gitbook.io/cyber-guys-blog/blogs/initial-access-via-pdf-file-silently </a> </p>
