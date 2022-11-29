@@ -163,21 +163,6 @@
             <br>
             <img src="/Website/writeups/HTB/PRECIOUS/media/PRECIOUS10.png" alt="website" class="center">
             </p>
-            <h3>== Run for the flag ==</h3>
-            </p>
-            <p>Two private network addresses, one for the flask application and one for an nodeApi? <br>Can we access these somehow within the pdf creation? So, flask usually runs on port 5000, lets check! <br>
-              <p-js>&lt;script> x=new XMLHttpRequest; x.onload=function(){ document.write(this.responseText) }; x.open("GET","http://pdf-carnage-flask:5000/"); x.send(); &lt;/script>
-            </p>
-            <br>
-            <p>This will create an pdf, however its empty. So the port seems to be the right one, but no more information besides that. Tinkering with that for a while I found nothing... <br>So I took a closer look at the api, accessable on <md>http://nodeapi:3000</md> within the payload. </p>
-            <br>
-            <img src="/Website/writeups/CSRv2022/media/PDFCARNAGEAPI.png" alt="website" class="center">
-            <br>
-            <p>Yeah, no shit Sherlock, I already knew you were the API. <br>Okay lets check some endpoints here. Maybe <md>/flag?</md>&nbsp &nbsp ... Unfortunately not. <br>So there are two options now to solve the challenge: <br>The real Problem at the end was that requesting a PDF had a limitation of 15 requests per minute. Maybe this writeup reads like "I know about dynamic pdf XSS, let me grab the flag real quick", but it was not. Finding out LFI works was a matter of under 30min. Finding the flag? Whole different story. <br>Time ran out, and either you were lucky enough to check for <md>http://nodeapi:3000/sitemap.xml</md> or u were super lucky enough to check directly for <md>http://nodeapi:3000/api/flag</md>
-            </p>
-            <br>
-            <br>
-            <img src="/Website/writeups/CSRv2022/media/PDFCARNAGEFLAG.png" alt="website" class="center">
             <br>
             <br>
             <h3 class="awesome pa_wi">Thoughts:</h3>
