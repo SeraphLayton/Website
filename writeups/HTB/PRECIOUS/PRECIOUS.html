@@ -124,25 +124,25 @@
             <p>
             <h3>== User Flag ==</h3>
             </p>
-            <p> Since pdfkit is written in ruby and the backendservice executed my payload, i operated as "ruby-user" in the reverse shell.
-            <br>So I tinkered round a little bit, and found a user called "Henry", but wasnt able to read the user.txt at /home/henry/user.txt.
+            <p> Since pdfkit is written in ruby and the backendservice executed my payload, I operated as "ruby-user" in the reverse shell.
+            <br>So I tinkered round a little bit, and found a user called "Henry", but wasnt allowed to read the user.txt at /home/henry/user.txt as ruby.
             <br>With '<md> grep "henry" -r 2>/dev/null </md>' I found a config-file in '<md> /home/ruby/.bundle/ </md>' containing henrys password!
             <br>Started a ssh-session as henry and got the user flag.
             </p>
             <br>
-            <img src="/Website/writeups/HTB/PRECIOUS/media/PRECIOUS4.png" alt="website" class="center">
+            <img src="/Website/writeups/HTB/PRECIOUS/media/PRECIOUS5.png" alt="website" class="center">
             <br>
             <br>
             <p>
             <h3>== PrivEsc to root ==</h3>
             <p> Running linpeas is usually one of my first step during privilege escalation, but even before that I try '<md> sudo -l </md>'.
             <br>
-            <img src="/Website/writeups/HTB/PRECIOUS/media/PRECIOUS4.png" alt="website" class="center">
+            <img src="/Website/writeups/HTB/PRECIOUS/media/PRECIOUS6.png" alt="website" class="center">
             <br>
             <br> Henry is allowed to run '<md> /usr/bin/ruby /opt/update_dependencies.rb </md>' as root without a password.
             <br> Changed my current working directory to /opt/, looked at the ruby script and ran it!
             <br>
-            <img src="/Website/writeups/HTB/PRECIOUS/media/PRECIOUS4.png" alt="website" class="center">
+            <img src="/Website/writeups/HTB/PRECIOUS/media/PRECIOUS7.png" alt="website" class="center">
             <br>
             <br> Looking at the Error, I came to the conclusion that the script is looking at the current working directory for the dependecies.yml file in in /opt/ there was no such file.
             <br> Henry was not allowed to create or change any files in /opt/ so i created a dependencies.yml file in /home/henry/ and wrote "test" to it. 
