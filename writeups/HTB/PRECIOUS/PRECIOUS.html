@@ -89,8 +89,8 @@
             <h3>== Enumeration ==</h3>
             </p>
             <p> Fired up nmap, but found nothing suspecious (just port 22, 80 as ususal for HackTheBox).
-            <br>Added the IP to /etc/hosts bound to precious.htb and visited the WebPage. Seems like a converter for Web Pages to a PDF File through an URL.
-            <br>Tested it with a http-link to my Website but got following Error Message:</p>
+            <br>Added the IP to '<md>/etc/hosts bound</md>' to '<md>precious.htb</md>' and visited the WebPage. Seems like a converter for Web Pages to a PDF File through an URL.
+            <br>Tested it with a http-link to my Website but got following Error:</p>
             <br>
             <img src="/Website/writeups/HTB/PRECIOUS/media/PRECIOUS2.png" alt="Picture" class="center">
             <br>
@@ -100,9 +100,9 @@
             </p>
             <p> Okay, it says "remote URL". What about the localhost?
             <br>I checked it with '<md> http://localhost:80/ </md>' but got the same Error.
-            <br>Strange isnt it? So I tried various other options to get a pdf, but it was always the Remote-Error or it throw another Error if the input didnt start with "http(s)".
+            <br>Strange isnt it? So I tried various other options to get a pdf, but it always was the Remote-Error or some other Error if the input didnt start with "http(s)".
             <br>If this is the right way, how do I get something interesting? So what about fucked up input like the Null-Byte ?
-            <br>Et voilà, '<md> http://%00 </md>' downloaded an empty PDF! But I didnt find a way to get any content in it.
+            <br>Et voilà, '<md> http://%00 </md>' downloaded an empty PDF! But I didnt find a way to get some content in it.
             <br>Then I took a look at the PDF-Creator trough the Browser Console: </p>
             <br>
             <img src="/Website/writeups/HTB/PRECIOUS/media/PRECIOUS3.png" alt="Picture" class="center">
@@ -125,7 +125,7 @@
             <h3>== User Flag ==</h3>
             </p>
             <p> Since pdfkit is written in ruby and the backendservice executed my payload, I operated as "ruby-user" in the reverse shell.
-            <br>So tinkered for a bit, and found a user called "Henry", but had no rights to read the user.txt at /home/henry/user.txt
+            <br>So tinkered for a bit, and found a user called "Henry", but had no rights to read the '<md>user.txt</md>' at '<md>/home/henry/user.txt</md>'
             <br>With '<md> grep "henry" -r 2>/dev/null </md>' I found a config-file in '<md> /home/ruby/.bundle/ </md>' containing henrys password!
             <br>Started a ssh-session as henry and got the user flag.
             </p>
