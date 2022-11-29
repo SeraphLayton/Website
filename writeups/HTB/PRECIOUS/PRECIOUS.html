@@ -108,7 +108,7 @@
             <img src="/Website/writeups/HTB/PRECIOUS/media/PRECIOUS3.png" alt="Picture" class="center">
             <br>
             <br>
-            <p> pdkit v0.8.6
+            <p> '<md>pdkit v0.8.6</md>'
             <br> Checked the version and found out that it isnt the most up to date!
             <br> Scrapping GitHub I saw a few posts about the changes since then and finally found a vulnerability that could be exploitable. </p>
             <br>
@@ -135,8 +135,9 @@
             <br>
             <p>
             <h3>== PrivEsc to root ==</h3>
-            <p> Running linpeas is usually one of my first step during privilege escalation, but even before that I try '<md> sudo -l </md>'.
+            <p> Running linpeas is usually one of my first step during privilege escalation, but even before that I try '<md> sudo -l </md>'. </p>
             <br>
+            <p>
             <img src="/Website/writeups/HTB/PRECIOUS/media/PRECIOUS6.png" alt="website" class="center">
             <br>
             <br> Henry is allowed to run '<md> /usr/bin/ruby /opt/update_dependencies.rb </md>' as root without a password.
