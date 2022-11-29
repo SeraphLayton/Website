@@ -140,7 +140,7 @@
             <p>
             <img src="/Website/writeups/HTB/PRECIOUS/media/PRECIOUS6.png" alt="website" class="center">
             <br>
-            <br> Henry is allowed to run '<md> /usr/bin/ruby /opt/update_dependencies.rb </md>' as root without a password.
+            <br> Henry is allowed to run '<md> /usr/bin/ruby &nbsp;&nbsp; /opt/update_dependencies.rb </md>' as root without a password.
             <br> Changed my current working directory to /opt/, looked at the ruby script and ran it! </p>
             <p>
             <br>
@@ -148,9 +148,9 @@
             <br>
             <img src="/Website/writeups/HTB/PRECIOUS/media/PRECIOUS7.png" alt="website" class="center">
             <br>
-            <br> Looking at the Error, I came to the conclusion that the script is looking at the current working directory for the dependecies.yml file and in /opt/ there was no such file.
-            <br> Henry was not allowed to create or change any files in /opt/ so i created a dependencies.yml file in /home/henry/ and wrote "test" to it.
-            <br> Ran the script again and got an Error back showing the content of my dependencies.yml file! </p>
+            <br> Looking at the Error, I came to the conclusion that the script is looking at the current working directory for the '<md>dependecies.yml</md>' file and in '<md>/opt/</md>' there was no such file.
+            <br> Henry was not allowed to create or change any files in '<md>/opt/</md>' so i created a '<md>dependencies.yml</md>' file in '<md>/home/henry/</md>' and wrote "test" to it.
+            <br> Ran the script again and got an Error back showing the content of my '<md>dependencies.yml</md>' file! </p>
             <br>
             <img src="/Website/writeups/HTB/PRECIOUS/media/PRECIOUS8.png" alt="website" class="center">
             <br>
