@@ -133,23 +133,15 @@
             <br>
             <br>
             <p>
-            <h3>== External Pictures are good. Internal files are better ==</h3>
-            </p>
-            <p>So far so good, but imbedding pictures wont help to crush this challenge. What about webhooks? Works, but wont get us further either... <br>What about internal files? Trying a few scripts I came up with: <br>
-              <p-js>&lt;script> x=new XMLHttpRequest; x.onload=function(){ document.write(this.responseText) }; x.open("GET","file:///etc/passwd"); x.send(); &lt;/script>
-            </p>
+            <h3>== PrivEsc to root ==</h3>
+            <p> Running linpeas is usually one of my first step during privilege escalation, but even before that I try '<md> sudo -l </md>'.
             <br>
             <img src="/Website/writeups/CSRv2022/media/PDFCARNAGEPASSWD.png" alt="website" class="center">
             <br>
+            <br> Henry is allowed to run '<md> /usr/bin/ruby /opt/update_dependencies.rb </md>' as sudo without a password.
             <br>
-            <p>There were a few files accesible, but not all of them were interesting or usefull for this challenge <br>But lets take a look at <md>/etc/hosts</md>
+            <br>
             </p>
-            <br>
-            <img src="/Website/writeups/CSRv2022/media/PDFCARNAGEHOSTS.png" alt="website" class="center">
-            <br>
-            <br>
-            <br>
-            <p>
             <h3>== Run for the flag ==</h3>
             </p>
             <p>Two private network addresses, one for the flask application and one for an nodeApi? <br>Can we access these somehow within the pdf creation? So, flask usually runs on port 5000, lets check! <br>
