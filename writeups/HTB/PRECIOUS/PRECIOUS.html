@@ -101,8 +101,8 @@
             <p> Okay, it says "remote URL". What about the localhost?
             <br>I checked it with '<md> http://localhost:80/ </md>' but got the same Error.
             <br>Strange isnt it? So I tried various other options to get a pdf, but it was always the Remote-Error or it throw another Error if the input didnt start with "http(s)".
-            <br>If this is the right way, how do I get something interesting? So I put a character in most functions doesnt like that much.
-            <br>Et voilà, '<md> http://%00 </md>' downloaded an empty PDF! But I didnt find a way to get a pdf with some content.
+            <br>If this is the right way, how do I get something interesting? So what about fucked up input like the Null-Byte ?
+            <br>Et voilà, '<md> http://%00 </md>' downloaded an empty PDF! But I didnt find a way to get any content in it.
             <br>Then I took a look at the PDF-Creator trough the Browser Console: </p>
             <br>
             <img src="/Website/writeups/HTB/PRECIOUS/media/PRECIOUS3.png" alt="Picture" class="center">
@@ -125,7 +125,7 @@
             <h3>== User Flag ==</h3>
             </p>
             <p> Since pdfkit is written in ruby and the backendservice executed my payload, I operated as "ruby-user" in the reverse shell.
-            <br>So I tinkered round a little bit, and found a user called "Henry", but wasnt allowed to read the user.txt at /home/henry/user.txt as ruby.
+            <br>So tinkered for a bit, and found a user called "Henry", but had no rights to read the user.txt at /home/henry/user.txt
             <br>With '<md> grep "henry" -r 2>/dev/null </md>' I found a config-file in '<md> /home/ruby/.bundle/ </md>' containing henrys password!
             <br>Started a ssh-session as henry and got the user flag.
             </p>
