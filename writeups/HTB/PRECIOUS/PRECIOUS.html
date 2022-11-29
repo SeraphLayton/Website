@@ -99,17 +99,16 @@
             <h3>== How to get a PDF ==</h3>
             </p>
             <p> Okay, it says "remote URL". What about the localhost?
-            <br>I checked it with http://localhost:80/ but got the same Error.
+            <br>I checked it with <md> http://localhost:80/ </md> but got the same Error.
             <br>Strange isnt it? So I tried various other options to get a pdf, but it was always the Remote-Error or it throw another Error if the input didnt start with "http(s)".
             <br>If this is the right way, how do I get something interesting? So I put a character in most functions doesnt like that much.
-            <br>Et voilà, http://%00 downloaded an empty PDF! But I didnt find any way to get a pdf with some content.
+            <br>Et voilà, <md> http://%00 </md> downloaded an empty PDF! But I didnt find a way to get a pdf with some content.
             <br>Then I took a look at the PDF-Creator trough the Browser Console: </p>
             <br>
             <img src="/Website/writeups/HTB/PRECIOUS/media/PRECIOUS3.png" alt="website" class="center">
             <br>
             <br>
-            <p>We can download the pdf and check if anything seems odd. What about strings? Hidden Text or anything else? <br>But after a while I came to the conclusion that this will not lead to anything useful. </p>
-            <p>Except the creator of the pdf. This might give a hint about the program running in the background. I checked this by opening dev tools in the browser and inspecting the console:</p>
+            <p> pdkit v0.8.6 </p>
             <br>
             <img src="/Website/writeups/CSRv2022/media/PDFCARNAGECONSOLE.png" alt="website" class="center">
             <br>
