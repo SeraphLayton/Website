@@ -154,8 +154,8 @@
             <br>
             <img src="/Website/writeups/HTB/PRECIOUS/media/PRECIOUS8.png" alt="website" class="center">
             <br>
-            <p> With HTB, the root flag is usually stored in /root/root.txt. So I could've run '<md> ln -s /root/root.txt dependencies.yml </md>' and read its content by running the script.
-            <br> However, I wanted root-shell! I cant do shit in ruby, but I know that "FileRead"-Functions can be abused for arbitary command execution in various programming languages. Searching the Internet I found following article: <br> <a href="https://blog.stratumsecurity.com/2021/06/09/blind-remote-code-execution-through-yaml-deserialization/" > https://blog.stratumsecurity.com/2021/06/09/blind-remote-code-execution-through-yaml-deserialization/ </a>. Looked promissing, so I came up with following scipt: </p>
+            <p> With HTB, the root flag is usually stored in '<md>/root/root.txt</md>'. So I could've run '<md> ln -s /root/root.txt dependencies.yml </md>' and read its content by running the script.
+            <br> However, I wanted root-shell! I cant do shit in ruby, but I know that "FileRead"-Functions can be abused for arbitary command execution in various programming languages. Searching the Internet I found following article: <br> <a href="https://blog.stratumsecurity.com/2021/06/09/blind-remote-code-execution-through-yaml-deserialization/" > https://blog.stratumsecurity.com/2021/06/09/blind-remote-code-execution-through-yaml-deserialization/ </a>. Looked promissing, so I came up with: </p>
             <br>
             <img src="/Website/writeups/HTB/PRECIOUS/media/PRECIOUS9.png" alt="website" class="center">
             <br>
