@@ -147,20 +147,20 @@
             <br>
             <img src="/Website/writeups/HTB/PRECIOUS/media/PRECIOUS7.png" alt="website" class="center">
             <br>
-            <br> Looking at the Error, I came to the conclusion that the script is looking at the current working directory for the dependecies.yml file in in /opt/ there was no such file.
+            <br> Looking at the Error, I came to the conclusion that the script is looking at the current working directory for the dependecies.yml file and in /opt/ there was no such file.
             <br> Henry was not allowed to create or change any files in /opt/ so i created a dependencies.yml file in /home/henry/ and wrote "test" to it.
-            <br> Ran the script again and got an Error back showing the content of my dependencies.yml file!
+            <br> Ran the script again and got an Error back showing the content of my dependencies.yml file! </p>
             <br>
             <img src="/Website/writeups/HTB/PRECIOUS/media/PRECIOUS8.png" alt="website" class="center">
             <br>
-            <br> With HTB, the root flag is usually stored in /root/root.txt. So I could run '<md> ln -s /root/root.txt dependencies.yml </md>' and read its content by running the script.
-            <br> However, I wanted root-shell! I cant do shit in ruby, but I know that "FileRead"-Functions can be abused for arbitary command execution in various programming languages.
-            <br> Searching the Internet I found following article: <a href="https://blog.stratumsecurity.com/2021/06/09/blind-remote-code-execution-through-yaml-deserialization/" > https://blog.stratumsecurity.com/2021/06/09/blind-remote-code-execution-through-yaml-deserialization/ </a>. Looked promissing, so I came up with following scipt:
-            <br> So I wrote the following inside of dependencies.yml:
+            <br> With HTB, the root flag is usually stored in /root/root.txt. So I could've run '<md> ln -s /root/root.txt dependencies.yml </md>' and read its content by running the script.
+            <br> However, I wanted root-shell! I cant do shit in ruby, but I know that "FileRead"-Functions can be abused for arbitary command execution in various programming languages. Searching the Internet I found following article: <br> <a href="https://blog.stratumsecurity.com/2021/06/09/blind-remote-code-execution-through-yaml-deserialization/" > https://blog.stratumsecurity.com/2021/06/09/blind-remote-code-execution-through-yaml-deserialization/ </a>. Looked promissing, so I came up with following scipt: </p>
             <br>
             <img src="/Website/writeups/HTB/PRECIOUS/media/PRECIOUS9.png" alt="website" class="center">
             <br>
+            <br> Afterward running the script once again, I just used '<md>bash -p</md>' to become root and read the root flag!
             <br>
+            <img src="/Website/writeups/HTB/PRECIOUS/media/PRECIOUS9.png" alt="website" class="center">
             </p>
             <h3>== Run for the flag ==</h3>
             </p>
