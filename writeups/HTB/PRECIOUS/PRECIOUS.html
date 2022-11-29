@@ -78,7 +78,7 @@
           <div class="col-md-12">
             <div class="titlepage">
               <h2>CSRv2022 - PDFCARNAGE</h2>
-              <span>TLDR: SSRF in dynamic pdf creator</span>
+              <span>TLDR: CVE-2022-25765 [Command Injection] + Ruby Deserialisation Gadget Chain</span>
             </div>
           </div>
         </div>
@@ -86,12 +86,12 @@
           <div class="our_text_box_test">
             <h3 class="awesome pa_wi">Writeup:</h3>
             <p>
-            <h3>== Information Presented ==</h3>
+            <h3>== Enumeration ==</h3>
             </p>
-            <p>Our intern created this PDF generator. It's not 100% secure yet, but there's nothing valuable on this host anyway. <br>Website: &nbsp <a href="http://pdfcarnage.rumble.host/">http://pdfcarnage.rumble.host/</a>
-            </p>
+            <p> Fired up nmap, but found nothing suspecious (just port 22, 80 as ususal for HackTheBox).
+            <br> added the IP to /etc/hosts bound to precious.htb and visited the WebPage </p>
             <br>
-            <img src="/Website/writeups/CTFs/CSRv2022/media/PDFCARNAGE1.png" alt="website" class="center">
+            <img src="/Website/writeups/HTB/PRECIOUS/media/PRECIOUS1.png" alt="website" class="center">
             <br>
             <br>
             <p>
@@ -99,13 +99,13 @@
             </p>
             <p>The content of the Website looks rather simple and so is its purpose. You can submit a query and it redirects you to a pdf where the input and the user-agent of the browser is reflected.</p>
             <br>
-            <img src="/Website/writeups/CTFs/CSRv2022/media/PDFCARNAGETEST.png" alt="website" class="center">
+            <img src="/Website/writeups/CSRv2022/media/PDFCARNAGETEST.png" alt="website" class="center">
             <br>
             <br>
             <p>We can download the pdf and check if anything seems odd. What about strings? Hidden Text or anything else? <br>But after a while I came to the conclusion that this will not lead to anything useful. </p>
             <p>Except the creator of the pdf. This might give a hint about the program running in the background. I checked this by opening dev tools in the browser and inspecting the console:</p>
             <br>
-            <img src="/Website/writeups/CTFs/CSRv2022/media/PDFCARNAGECONSOLE.png" alt="website" class="center">
+            <img src="/Website/writeups/CSRv2022/media/PDFCARNAGECONSOLE.png" alt="website" class="center">
             <br>
             <p>wkhtmltopdf? Never heared of it. Searching github I found its repository: &nbsp <a href="https://github.com/wkhtmltopdf/wkhtmltopdf">https://github.com/wkhtmltopdf/wkhtmltopdf</a>
             </p>
@@ -120,12 +120,12 @@
             <p>So first lets put in a basic XSS command to check wether this is a thing or not. <p-js>&lt;script>document.alert(1)&lt;/script></p-js>
             </p>
             <br>
-            <img src="/Website/writeups/CTFs/CSRv2022/media/PDFCARNAGEINPUTFILTER.png" alt="website" class="center">
+            <img src="/Website/writeups/CSRv2022/media/PDFCARNAGEINPUTFILTER.png" alt="website" class="center">
             <br>
             <p>Not so cool... <br>After trying several different methods to gain xss I realized that this is not gonna happen and my input will always be detected as dangerous, no workaround for the filter... </p>
             <p>But my input isnt the only thing that gets reflected in the pdf, so what about the user agent? <br>Setting my user-agent to:&nbsp &nbsp <p-js>&lt;img src="https://i1.sndcdn.com/artworks-000599808744-91k9x2-t500x500.jpg"></p-js>Worked! </p>
             <br>
-            <img src="/Website/writeups/CTFs/CSRv2022/media/PDFCARNAGEHACKERMAN.png" alt="website" class="center">
+            <img src="/Website/writeups/CSRv2022/media/PDFCARNAGEHACKERMAN.png" alt="website" class="center">
             <br>
             <br>
             <br>
@@ -136,13 +136,13 @@
               <p-js>&lt;script> x=new XMLHttpRequest; x.onload=function(){ document.write(this.responseText) }; x.open("GET","file:///etc/passwd"); x.send(); &lt;/script>
             </p>
             <br>
-            <img src="/Website/writeups/CTFs/CSRv2022/media/PDFCARNAGEPASSWD.png" alt="website" class="center">
+            <img src="/Website/writeups/CSRv2022/media/PDFCARNAGEPASSWD.png" alt="website" class="center">
             <br>
             <br>
             <p>There were a few files accesible, but not all of them were interesting or usefull for this challenge <br>But lets take a look at <md>/etc/hosts</md>
             </p>
             <br>
-            <img src="/Website/writeups/CTFs/CSRv2022/media/PDFCARNAGEHOSTS.png" alt="website" class="center">
+            <img src="/Website/writeups/CSRv2022/media/PDFCARNAGEHOSTS.png" alt="website" class="center">
             <br>
             <br>
             <br>
@@ -155,13 +155,13 @@
             <br>
             <p>This will create an pdf, however its empty. So the port seems to be the right one, but no more information besides that. Tinkering with that for a while I found nothing... <br>So I took a closer look at the api, accessable on <md>http://nodeapi:3000</md> within the payload. </p>
             <br>
-            <img src="/Website/writeups/CTFs/CSRv2022/media/PDFCARNAGEAPI.png" alt="website" class="center">
+            <img src="/Website/writeups/CSRv2022/media/PDFCARNAGEAPI.png" alt="website" class="center">
             <br>
             <p>Yeah, no shit Sherlock, I already knew you were the API. <br>Okay lets check some endpoints here. Maybe <md>/flag?</md>&nbsp &nbsp ... Unfortunately not. <br>So there are two options now to solve the challenge: <br>The real Problem at the end was that requesting a PDF had a limitation of 15 requests per minute. Maybe this writeup reads like "I know about dynamic pdf XSS, let me grab the flag real quick", but it was not. Finding out LFI works was a matter of under 30min. Finding the flag? Whole different story. <br>Time ran out, and either you were lucky enough to check for <md>http://nodeapi:3000/sitemap.xml</md> or u were super lucky enough to check directly for <md>http://nodeapi:3000/api/flag</md>
             </p>
             <br>
             <br>
-            <img src="/Website/writeups/CTFs/CSRv2022/media/PDFCARNAGEFLAG.png" alt="website" class="center">
+            <img src="/Website/writeups/CSRv2022/media/PDFCARNAGEFLAG.png" alt="website" class="center">
             <br>
             <br>
             <h3 class="awesome pa_wi">Thoughts:</h3>
