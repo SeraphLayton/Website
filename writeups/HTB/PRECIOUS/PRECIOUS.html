@@ -90,17 +90,22 @@
             </p>
             <p> Fired up nmap, but found nothing suspecious (just port 22, 80 as ususal for HackTheBox).
             <br>Added the IP to /etc/hosts bound to precious.htb and visited the WebPage. Seems like a converter for Web Pages to a PDF File through an URL.
-            <br>Tested it with a http-link to my Website but got the Error Message: Cannot load remote URL!</p>
+            <br>Tested it with a http-link to my Website but got following Error Message:</p>
             <br>
             <img src="/Website/writeups/HTB/PRECIOUS/media/PRECIOUS2.png" alt="website" class="center">
             <br>
             <br>
             <p>
-            <h3>== What is this Website about? ==</h3>
+            <h3>== How to get a PDF ==</h3>
             </p>
-            <p>The content of the Website looks rather simple and so is its purpose. You can submit a query and it redirects you to a pdf where the input and the user-agent of the browser is reflected.</p>
+            <p> Okay, it says "remote URL". What about the localhost?
+            <br>I checked it with http://localhost:80/ but got the same Error.
+            <br>Strange isnt it? So I tried various other options to get a pdf, but it was always the Remote-Error or it throw another Error if the input didnt start with "http(s)".
+            <br>If this is the right way, how do I get something interesting? So I put a character in most functions doesnt like that much.
+            <br>Et voilà, http://%00 downloaded an empty PDF! But I didnt find any way to get a pdf with some content.
+            <br>Then I took a look at the PDF-Creator trough the Browser Console: </p>
             <br>
-            <img src="/Website/writeups/CSRv2022/media/PDFCARNAGETEST.png" alt="website" class="center">
+            <img src="/Website/writeups/HTB/PRECIOUS/media/PRECIOUS3.png" alt="website" class="center">
             <br>
             <br>
             <p>We can download the pdf and check if anything seems odd. What about strings? Hidden Text or anything else? <br>But after a while I came to the conclusion that this will not lead to anything useful. </p>
